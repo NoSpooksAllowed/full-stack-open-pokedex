@@ -22,3 +22,11 @@ jobs:
         run: npm run build
       - name: Test
         run: npm test
+      - name: Render Deployment
+        uses: bounceapp/render-action@0.12.0
+        with:
+          render-token: ${{ secrets.RENDER_API_TOKEN }}
+          service-id: srv-${{ secrets.RENDER_SERVICE_ID }}
+          retries: 20
+          wait: 16000
+          sleep: 30000
